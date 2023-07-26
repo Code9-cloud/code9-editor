@@ -16,7 +16,7 @@ export class UIFullScreenContainerComponent extends UIComponent{
     }
 
     registerEvents() {
-        window.addEventListener('resize', (e) => {
+        window.addEventListener('resize', (_e) => {
             this.resize(window.innerWidth, window.innerHeight);
         });
     }
