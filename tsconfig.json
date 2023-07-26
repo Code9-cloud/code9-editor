@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "target": "es6",
+    "module": "commonjs",
+    "sourceMap": true,
+    "moduleResolution": "NodeNext",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["./src/**/*"]
+}

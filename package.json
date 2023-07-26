@@ -1,0 +1,26 @@
+{
+  "name": "code9-editor",
+  "version": "0.0.1",
+  "description": "Code 9 Workflow Editor",
+  "private": true,
+  "scripts": {
+    "develop": "webpack-dev-server --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Satyender Yadav",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.1",
+    "image-webpack-loader": "^8.1.0",
+    "source-map-loader": "^4.0.1",
+    "ts-loader": "^9.4.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "pixi.js": "^7.2.4"
+  }
+}
