@@ -22,5 +22,20 @@
   },
   "dependencies": {
     "pixi.js": "^7.2.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code9-vip/code9-editor.git"
+  },
+  "keywords": [
+    "code9",
+    "workflow",
+    "editor",
+    "flow",
+    "programming"
+  ],
+  "bugs": {
+    "url": "https://github.com/Code9-vip/code9-editor/issues"
+  },
+  "homepage": "https://github.com/Code9-vip/code9-editor#readme"
 }
