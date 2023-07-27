@@ -1,1 +1,8 @@
-document.getElementById("test_head").textContent = "Hello from Code 9!"
+import EditorApp from "./editorui/editor-app";
+
+document.body.style.margin = '0';
+let eapp = new EditorApp(window);
+// @ts-ignore
+document.body.append(eapp.app.view);
+eapp.registerEvents();
+eapp.draw();
