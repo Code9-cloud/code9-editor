@@ -7,7 +7,7 @@ export default abstract class UIBaseComponent<T extends UIStyle = UIStyle> {
     container: PIXI.Container;
     position: UIPoint = new UIPoint();
     size: UISize = new UISize();
-    style: UIStyle = new UIStyle();
+    style: UIStyle = new UIStyle({});
 
     constructor(style?: T){
         if(style) {
@@ -18,6 +18,9 @@ export default abstract class UIBaseComponent<T extends UIStyle = UIStyle> {
 
     draw(){};
     clear(){};
-    redraw(){};
+    redraw(){
+        this.clear();
+        this.draw();
+    };
     registerEvents(){};
 }

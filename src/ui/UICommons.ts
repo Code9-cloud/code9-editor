@@ -21,3 +21,15 @@ export class UIPoint implements IPosition {
         this.y = y;
     }
 }
+
+export interface UIAdjustableWidth {
+    updateWidth(width: number): void;
+}
+
+export interface UIAdjustableHeight {
+    updateHeight(height: number): void;
+}
+
+export interface UIAdjustableSides extends UIAdjustableWidth, UIAdjustableHeight {
+    resize(width: number, height: number): void;
+}

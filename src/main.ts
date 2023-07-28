@@ -1,4 +1,4 @@
-import EditorApp from "./editorui/editor-app";
+import EditorApp from "./editorui/EditorApp";
 
 document.body.style.margin = '0';
 let eapp = new EditorApp(window);

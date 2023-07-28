@@ -1,6 +1,7 @@
 import UIApp from "../ui/UIApp";
 import {UIFillComponent} from "../ui/UIFillComponent";
-import UIStyle from "../ui/UIStyle";
+import {UIBgStyle} from "../ui/UIStyle";
+import EditorComponent from "./EditorComponent";
 
 export default class EditorApp extends UIApp{
     width: number;
@@ -12,9 +13,10 @@ export default class EditorApp extends UIApp{
         this.app.renderer.resize(this.width, this.height);
         (this.app.view as HTMLCanvasElement).style.position = 'absolute';
         (this.app.view as HTMLCanvasElement).style.display = 'block';
-        let fullscreen_wrapper = new UIFillComponent(this.width, this.height, new UIStyle('#0000ff'));
+        // let fullscreen_wrapper = new UIFillComponent(this.width, this.height, new UIBgStyle({bgColor: '#0000ff'}));
         // fullscreen_wrapper.registerEvents();
-        this.setRoot(fullscreen_wrapper);
+        let editor_comp = new EditorComponent(this.width, this.height, new UIBgStyle());
+        this.setRoot(editor_comp);
     }
 
     registerEvents() {

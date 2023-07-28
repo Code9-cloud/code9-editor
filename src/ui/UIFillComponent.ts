@@ -1,18 +1,16 @@
 import {UIComponent} from "./UIComponent";
-import UIStyle from "./UIStyle";
-import * as PIXI from 'pixi.js';
+import {UIBgStyle} from "./UIStyle";
+import UIBaseComponent from "./UIBaseComponent";
+import UIComponentWithBackground from "./UIComponentWithBackground";
 
 // There should be a similar FullContainerComponent that fills whole container or maybe dynamic container with width & height set to 100%
-export class UIFillComponent extends UIComponent{
+export class UIFillComponent<T extends UIBaseComponent = UIBaseComponent, U extends UIBgStyle = UIBgStyle> extends UIComponentWithBackground<T,U>{
     child: UIComponent;
     has_child: boolean = false;
-    bg_rect: PIXI.Graphics;
-    constructor(width: number, height: number, style?: UIStyle) {
+    constructor(width: number, height: number, style: U) {
         super(style);
         this.size.width = width;
         this.size.height = height;
-        this.bg_rect = new PIXI.Graphics();
-        this.container.addChild(this.bg_rect);
     }
 
     resize(width:number, height:number) {
@@ -35,22 +33,22 @@ export class UIFillComponent extends UIComponent{
     }
 
     draw() {
-        this.bg_rect.beginFill(this.style.bgColor);
-        this.bg_rect.drawRect(0, 0, this.size.width, this.size.height);
-        this.bg_rect.endFill();
+        super.draw();
+        if(this.has_child){
+            this.child.draw();
+        }
     }
 
     redraw() {
         this.clear();
-        this.bg_rect.beginFill(this.style.bgColor);
-        this.bg_rect.drawRect(0, 0, this.size.width, this.size.height);
-        this.bg_rect.endFill();
-        if(this.has_child == true){
-            this.child.redraw();
-        }
+        super.redraw();
+        this.draw();
     }
 
     clear() {
-        this.bg_rect.clear();
+        if(this.has_child){
+            this.child.clear();
+        }
+        super.clear();
     }
 }
