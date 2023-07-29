@@ -33,6 +33,7 @@ export default class EditorComponent<S extends UIBgStyle> extends UIFillComponen
         let split_percent = 0.15;
         let remaining_width = this.size.width - (this.side_nav_width * this.cell_size + this.margin);
         let side_bar_width = remaining_width * split_percent;
+        this.side_bar_width = side_bar_width;
         let main_content_width = remaining_width - side_bar_width - this.margin;
         this.side_bar = new SideBarComponent(side_bar_width, remaining_height, new UIBgStyle({bgColor: '#440044'}));
         this.container.addChild(this.side_bar.container);
@@ -60,6 +61,9 @@ export default class EditorComponent<S extends UIBgStyle> extends UIFillComponen
         this.side_bar.container.x = (this.side_nav_width * this.cell_size) + this.margin;
         this.side_bar.container.y = nav_y;
         this.side_bar.draw();
+        this.main_comp.container.x = (this.side_nav_width * this.cell_size) + this.margin + this.side_bar_width + this.margin;
+        this.main_comp.container.y = nav_y;
+        this.main_comp.draw();
     }
 
     clear() {
@@ -67,6 +71,22 @@ export default class EditorComponent<S extends UIBgStyle> extends UIFillComponen
         this.bottom_bar.clear();
         this.side_nav.clear();
         this.side_bar.clear();
+        this.main_comp.clear();
         super.clear();
+    }
+
+    resize(width: number, height: number) {
+        super.resize(width, height);
+        this.menu_bar.resize(width, this.menu_bar_height * this.cell_size);
+        this.bottom_bar.resize(width, this.bottom_bar_height * this.cell_size);
+        let main_height = this.main_content_height;
+        this.side_nav.resize(this.side_nav_width* this.cell_size, main_height);
+        let remaining_width = width - (this.side_nav_width * this.cell_size + this.margin);
+        let side_bar_width = remaining_width * 0.15;
+        this.side_bar_width = side_bar_width;
+        let main_content_width = remaining_width - side_bar_width - this.margin;
+        this.side_bar.resize(side_bar_width,main_height);
+        this.main_comp.container.x = (this.side_nav_width * this.cell_size) + this.margin + side_bar_width + this.margin;
+        this.main_comp.resize(main_content_width, main_height);
     }
 }

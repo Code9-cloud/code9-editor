@@ -1,5 +1,4 @@
 import UIApp from "../ui/UIApp";
-import {UIFillComponent} from "../ui/UIFillComponent";
 import {UIBgStyle} from "../ui/UIStyle";
 import EditorComponent from "./EditorComponent";
 
@@ -24,8 +23,8 @@ export default class EditorApp extends UIApp{
             this.width = window.innerWidth;
             this.height = window.innerHeight;
             this.app.renderer.resize(window.innerWidth, window.innerHeight);
-            (this.root as UIFillComponent).resize(this.width, this.height);
+            (this.root as EditorComponent<UIBgStyle>).resize(this.width, this.height);
             this.root.redraw();
-        })
+        });
     }
 }
